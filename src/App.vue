@@ -1,0 +1,76 @@
+<script setup lang="ts">
+import { ref, onMounted, provide } from "vue";
+
+import Header from "./components/Header.vue";
+import Table from "./components/Table.vue";
+
+import axios from "axios";
+
+import { iPhone } from "./types.ts/phone";
+
+const phones = ref<iPhone[]>([]);
+const phonesOthers = ref<iPhone[]>([]);
+const numLength = ref<number>();
+const isActive = ref<boolean>(true);
+const currentlyActiveItem = ref<number>();
+
+
+const fetchPhones = async (num: number) => {
+  try {
+    const { data } = await axios.get("https://290dddb232f0bb1a.mokky.dev/phones");
+    numLength.value = data.length - 1;
+    phones.value = data.slice(0, num);
+     phonesOthers.value = data.filter((phone: iPhone) => !phones.value.includes(phone));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const changePhones = (parentPhone: iPhone, phone: iPhone) => {
+  phones.value.splice(phones.value.indexOf(parentPhone), 1, phone);
+  phonesOthers.value.splice(phonesOthers.value.indexOf(phone), 1, parentPhone);
+};
+
+const onChangeNumber = (event) => {
+  currentlyActiveItem.value = event.target.innerText;
+  fetchPhones(event.target.innerText);
+};
+
+onMounted(async () => {
+    currentlyActiveItem.value = 3;
+  await fetchPhones(3);
+});
+
+provide("phone", {
+  changePhones,
+});
+</script>
+
+<template>
+  <div>
+    <Header />
+    <div class="container pt-16 flex items-center text-center justify-between mb-5">
+      <h1 class="font-bold text-gray_title text-5xl text-[#828286]">Смартфоны</h1>
+    <div class="flex"><p class="flex items-center text-center text-m text-[#0D5ADC] tracking-[0.025em]">
+          Отобразить товары:
+          <ul class="flex p-0 cursor-pointer">
+          <li  v-for="n in numLength" :key="n"
+            class="ml-3"
+            @click="onChangeNumber"
+            :class="{ active: n + 1 == currentlyActiveItem }"
+          >
+            {{ n + 1 }}
+          </li>
+          </ul>
+        </p></div>
+        
+    </div>
+  <Table :phones="phones" :phonesOthers="phonesOthers" />
+    
+  </div>
+</template>
+<style scoped>
+.active {
+  border-bottom: 1px solid #000;
+}
+</style>
