@@ -1,7 +1,6 @@
 export interface iPhone {
   id: number
   imageUrl: string
-  imageUrlSmall: string
   name: string
   manufactured: string
   release: number

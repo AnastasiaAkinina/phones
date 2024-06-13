@@ -44,18 +44,21 @@ onMounted(async () => {
 provide("phone", {
   changePhones,
 });
+
+
+
 </script>
 
 <template>
   <div>
     <Header />
-    <div class="container pt-16 flex items-center text-center justify-between mb-5">
-      <h1 class="font-bold text-gray_title text-5xl text-[#828286]">Смартфоны</h1>
+    <div class="title-block container pt-16 flex items-center text-center justify-between">
+      <h1 class="title font-bold text-gray_title text-5xl text-[#828286]">Смартфоны</h1>
     <div class="flex"><p class="flex items-center text-center text-m text-[#0D5ADC] tracking-[0.025em]">
           Отобразить товары:
           <ul class="flex p-0 cursor-pointer">
           <li  v-for="n in numLength" :key="n"
-            class="ml-3"
+            class="ml-3 flex flex-wrap"
             @click="onChangeNumber"
             :class="{ active: n + 1 == currentlyActiveItem }"
           >
@@ -70,7 +73,30 @@ provide("phone", {
   </div>
 </template>
 <style scoped>
+.title-block {
+  margin-bottom: 20px;
+}
+
 .active {
   border-bottom: 1px solid #000;
+}
+
+@media (max-width: 1200px) {
+.title {
+  font-size: 2rem;
+}
+td,
+th {
+  font-size: 16px;
+}
+
+}
+
+@media (max-width: 481px) {
+.title {
+  display: none;
+}
+
+
 }
 </style>

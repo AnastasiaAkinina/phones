@@ -18,7 +18,7 @@ const compareEquals = (phones: iPhone[], field: string) => {
 </script>
 
 <template>
-  <table class="container">
+  <table class="container gap-4">
     <thead>
       <tr class="border-0">
         <th></th>
@@ -38,7 +38,9 @@ const compareEquals = (phones: iPhone[], field: string) => {
             @click="show = !show"
           />Показать различия
         </th>
-        <td v-for="phone in phones" v-bind:key="phone.id">{{ phone.name }}</td>
+        <td class="name" v-for="phone in phones" v-bind:key="phone.id">
+          {{ phone.name }}
+        </td>
       </tr>
     </thead>
     <tbody class="bg-[#F4F9FC]">
@@ -106,7 +108,7 @@ const compareEquals = (phones: iPhone[], field: string) => {
   </table>
 </template>
 
-<style setup>
+<style>
 .table * {
   border-bottom: 1px solid #cdcfd2;
 }
@@ -125,5 +127,78 @@ td {
   color: #3b4157;
   font-size: 18px;
   font-weight: 500;
+}
+
+@media (max-width: 1300px) {
+  .name {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1200px) {
+  td,
+  th {
+    font-size: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    td,
+    th {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 913px) {
+    th {
+      font-size: 12px;
+      max-width: 25%;
+      margin-left: 20px;
+    }
+  }
+  @media (max-width: 771px) {
+    th,
+    td {
+      font-size: 11px;
+    }
+    tbody td img {
+      width: 20px;
+      height: 20px;
+    }
+    th {
+      max-width: 28%;
+    }
+  }
+}
+
+@media (max-width: 481px) {
+  th,
+  td {
+    font-size: 8px;
+  }
+  thead td img {
+    width: 25px;
+  }
+  th {
+    max-width: 28%;
+  }
+  .name {
+    font-size: 8px;
+  }
+  thead tr th {
+    padding: 0;
+  }
+
+  th.items-center input {
+    width: 12px;
+    height: 12px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+  }
+
+  .items-center {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
 }
 </style>

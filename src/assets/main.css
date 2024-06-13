@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 @layer base {
   html {
     font-family: "Roboto", sans-serif;
@@ -21,18 +18,225 @@
 }
 
 body {
-
   margin: auto;
-  background: linear-gradient(to bottom, white 0%, white 32.4%, #F4F9FC 32.4%, #F4F9FC 100%);
+  background: linear-gradient(to bottom,
+      white 0%,
+      white 32.4%,
+      #f4f9fc 32.4%,
+      #f4f9fc 100%);
 }
 
 .container {
-  /* max-width: 1110px; */
+  max-width: 77%;
   margin: auto;
 }
 
-@media (max-width: 1150px) {
-  table {
-    padding: 10px;
+@media (max-width: 1920px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33.3%,
+        #f4f9fc 33.3%,
+        #f4f9fc 100%);
+  }
+
+}
+
+@media (max-width:1354px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 32.8%,
+        #f4f9fc 32.8%,
+        #f4f9fc 100%);
+  }
+
+}
+
+@media (max-width: 1201px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 32%,
+        #f4f9fc 32%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 1076px) {
+
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 32.1%,
+        #f4f9fc 32.1%,
+        #f4f9fc 100%);
+  }
+
+  .container {
+    max-width: 95%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 1025px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33.2%,
+        #f4f9fc 33.2%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 961px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 32.7%,
+        #f4f9fc 32.7%,
+        #f4f9fc 100%);
+  }
+
+
+}
+
+@media (max-width: 913px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33.3%,
+        #f4f9fc 33.3%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 785px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33%,
+        #f4f9fc 33%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 771px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33.7%,
+        #f4f9fc 33.7%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 642px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33.3%,
+        #f4f9fc 33.3%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 598px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33%,
+        #f4f9fc 33%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 592px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33.7%,
+        #f4f9fc 33.7%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 534px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33.4%,
+        #f4f9fc 33.4%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 528px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 33%,
+        #f4f9fc 33%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 481px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 26.7%,
+        #f4f9fc 26.7%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 467px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 26.4%,
+        #f4f9fc 26.4%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 435px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 26.2%,
+        #f4f9fc 26.2%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 389px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 26%,
+        #f4f9fc 26%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 384px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 25.7%,
+        #f4f9fc 25.7%,
+        #f4f9fc 100%);
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    background: linear-gradient(to bottom,
+        white 0%,
+        white 25.4%,
+        #f4f9fc 25.4%,
+        #f4f9fc 100%);
   }
 }
