@@ -15,6 +15,7 @@ const isActive = ref<boolean>(true);
 const currentlyActiveItem = ref<number>();
 
 
+
 const fetchPhones = async (num: number) => {
   try {
     const { data } = await axios.get("https://290dddb232f0bb1a.mokky.dev/phones");
@@ -42,7 +43,7 @@ onMounted(async () => {
 });
 
 provide("phone", {
-  changePhones,
+  changePhones
 });
 
 

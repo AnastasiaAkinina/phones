@@ -1,32 +1,43 @@
 <script setup lang="ts">
+import { watch } from "vue";
 import { ref, computed, toRef, defineProps, inject } from "vue";
+import { iPhone } from "../types.ts/phone";
 
 const isOpen = ref<boolean>(false);
-
-const props = defineProps({
-  phones: Array,
-  parentPhone: Object,
-});
+const query = ref<string>("");
 
 const { changePhones } = inject("phone");
+
+const props = defineProps<{
+  phones: iPhone[];
+  parentPhone: iPhone;
+}>();
+
+const checkInputContains = (name: String): Boolean => {
+  return name.toLowerCase().includes(query.value.toLowerCase());
+};
 </script>
 
 <template>
   <div class="menu relative cursor-pointer">
     <img
+      v-if="phones.length != 0"
       class="arrow-img ml-2 mt-8"
       @click="isOpen = !isOpen"
       src="/phone/arrow.png"
-      alt=""
+      alt="/"
     />
     <div class="sub-menu" v-if="isOpen">
-      <input class="w-full mb-5 p-2" type="text" placeholder="Поиск" />
-      <div class="flex items-center mb-6" v-for="phone in phones" v-bind:key="phone.id">
-        <div @click="changePhones(parentPhone, phone)">
-          <img src="/phone/Vector.png" alt="" />
+      <input v-model="query" class="w-full mb-5 p-2" type="search" placeholder="Поиск" />
+      {{ query }}
+      <div v-for="phone in phones" v-bind:key="phone.id">
+        <div class="flex items-center mb-6" v-if="checkInputContains(phone.name)">
+          <div @click="changePhones(parentPhone, phone)">
+            <img src="/phone/Vector.png" alt="" />
+          </div>
+          <img class="ml-4 mr-6 w-6 h-12" :src="phone.imageUrl" alt="/" />
+          <div>{{ phone.name }}</div>
         </div>
-        <img class="ml-4 mr-6 w-6 h-12" :src="phone.imageUrl" alt="/" />
-        <div>{{ phone.name }}</div>
       </div>
     </div>
   </div>
