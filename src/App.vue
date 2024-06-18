@@ -3,10 +3,12 @@ import { ref, onMounted, provide } from "vue";
 
 import Header from "./components/Header.vue";
 import Table from "./components/Table.vue";
+import {phonesApi} from "./api/phones";
+
 
 import axios from "axios";
 
-import { iPhone } from "./types.ts/phone";
+import { iPhone } from './types/phone'
 
 const phones = ref<iPhone[]>([]);
 const phonesOthers = ref<iPhone[]>([]);
@@ -18,7 +20,7 @@ const currentlyActiveItem = ref<number>();
 
 const fetchPhones = async (num: number) => {
   try {
-    const { data } = await axios.get("https://290dddb232f0bb1a.mokky.dev/phones");
+    const { data } = await phonesApi.getPhones(); 
     numLength.value = data.length - 1;
     phones.value = data.slice(0, num);
      phonesOthers.value = data.filter((phone: iPhone) => !phones.value.includes(phone));
@@ -32,9 +34,9 @@ const changePhones = (parentPhone: iPhone, phone: iPhone) => {
   phonesOthers.value.splice(phonesOthers.value.indexOf(phone), 1, parentPhone);
 };
 
-const onChangeNumber = (event) => {
-  currentlyActiveItem.value = event.target.innerText;
-  fetchPhones(event.target.innerText);
+const onChangeNumber = (event:number) => {
+  currentlyActiveItem.value = event;
+  fetchPhones(event);
 };
 
 onMounted(async () => {
@@ -60,7 +62,7 @@ provide("phone", {
           <ul class="flex p-0 cursor-pointer">
           <li  v-for="n in numLength" :key="n"
             class="ml-3 flex flex-wrap"
-            @click="onChangeNumber"
+            @click="onChangeNumber(n + 1)"
             :class="{ active: n + 1 == currentlyActiveItem }"
           >
             {{ n + 1 }}
@@ -101,3 +103,4 @@ th {
 
 }
 </style>
+./api/phonesApi./api/phones./types/phone

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from "vue";
 import { ref, computed, toRef, defineProps, inject } from "vue";
-import { iPhone } from "../types.ts/phone";
+import { iPhone } from "../types/phone";
 
 const isOpen = ref<boolean>(false);
 const query = ref<string>("");
@@ -67,3 +67,4 @@ const checkInputContains = (name: String): Boolean => {
   }
 }
 </style>
+../types/phone

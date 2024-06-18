@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { iPhone } from "../types.ts/phone";
+import { iPhone } from "../types/phone";
 import DropDownMenu from "./DropDownMenu.vue";
 
 const show = ref<boolean>(true);
 
-const props = defineProps({
-  phones: Array,
-  phonesOthers: Array,
-});
+const props = defineProps<{
+  phones: iPhone[];
+  phonesOthers: iPhone[];
+}>();
 
 const compareEquals = (phones: iPhone[], field: string) => {
   return (
@@ -202,3 +202,4 @@ td {
   }
 }
 </style>
+../types/phone

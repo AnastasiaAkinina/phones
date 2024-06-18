@@ -8,8 +8,8 @@ export interface iPhone {
   country: string
   memmory: number
   frequency: number
-  nfs: boolean
-  esim: boolean
-  charger: boolean
+  nfs: string
+  esim: string
+  charger: string
   price: number
 }
